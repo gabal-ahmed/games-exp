@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+            body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10%;
+
+ 
+  text-align: center;
+}
+
+h1 {
+  color: white;
+}
+input {
+  width: 1000px;
+  padding: 15px;
+  border-radius: 8px;
+  outline: none;
+  background-color: #222121;
+  border: none;
+  color: #fff;
+  
+}
+.btns {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+}
+.btns button {
+  padding: 5px 15px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.date{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    bottom: 5%;
+    
+}
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="text">
+    <h1>Health </h1>
+    <h1>&ThinSpace; :</h1>
+    <h1 id="helth"> &ThinSpace; 7</h1>
+</div>
+    <input id="inp" type="number">
+    <h1>Check Number for [1 : 100]</h1>
+    <div class="btns">
+
+        <button  onclick={Check()}>check</button>
+        <button onclick={replay()}>replay</button>
+        <button onclick={genrate()} >genrate</button>
+    </div>
+    <div class="date">
+        <div style="display: flex;">
+            <h1>lost :</h1>
+            <h1 id="lost">0</h1>
+        </div>
+        <div style="display: flex;">
+            <h1>Win :</h1>
+            <h1 id="win">0</h1>
+        </div>
+        
+    </div>
+    <script>
+        let result ;
+        let win  =document.getElementById("win")
+        let lost =document.getElementById('lost')
+      
+        genrate()
+        let inp = document.getElementById("inp")
+         let helth =document.getElementById("helth")
+        
+        function genrate(){
+            let number = Math.trunc(Math.random()*100)
+            
+            result = number
+           
+         return number
+        }
+        function replay (){
+            location.reload()
+        }
+        function Check (){
+            // helth.innerText = 
+            
+            if(+helth.innerHTML   === 0){
+                console.log("lost");
+                lost.innerText= +lost.innerText+1
+                console.log(`Number is ${result}`);
+                return
+            }else{
+                helth.innerText = helth.innerText -1 
+            }
+            
+           if(+inp.value > result ){
+             console.log("dowen");
+           }else if (+inp.value < result){
+            console.log("UP");
+           }
+           else{
+            console.log("congratulations");
+            win.innerText=+win.innerText+1
+           }
+          
+        }
+    </script>
+</body>
+</html>
