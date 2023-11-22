@@ -9,10 +9,12 @@
             body {
   background-color: black;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   margin-top: 10%;
+  height: 70vh;
+
 
  
   text-align: center;
@@ -53,9 +55,8 @@ input {
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
-    position: fixed;
-    width: 100%;
-    bottom: 5%;
+    width: 80%;
+    
     
 }
 
@@ -67,13 +68,13 @@ input {
     <div class="text">
     <h1>Health </h1>
     <h1>&ThinSpace; :</h1>
-    <h1 id="helth"> &ThinSpace; 7</h1>
+    <h1 id="helth"> &ThinSpace; 8</h1>
 </div>
     <input id="inp" type="number">
     <h1>Check Number for [1 : 100]</h1>
     <div class="btns">
 
-        <button  onclick={Check()}>check</button>
+        <button onclick="Check()" >check</button>
         <button onclick={replay()}>replay</button>
         <button onclick={genrate()} >genrate</button>
     </div>
@@ -89,6 +90,7 @@ input {
         
     </div>
     <script>
+        let check = document.getElementById("check")
         let result ;
         let win  =document.getElementById("win")
         let lost =document.getElementById('lost')
@@ -99,21 +101,23 @@ input {
         
         function genrate(){
             let number = Math.trunc(Math.random()*100)
-            
+            console.log(number);
             result = number
            
          return number
         }
         function replay (){
-            location.reload()
+            helth.innerHTML=`&ThinSpace; 8`
         }
         function Check (){
-            // helth.innerText = 
+             
             
             if(+helth.innerHTML   === 0){
                 console.log("lost");
                 lost.innerText= +lost.innerText+1
                 console.log(`Number is ${result}`);
+                replay()
+                genrate()
                 return
             }else{
                 helth.innerText = helth.innerText -1 
@@ -127,9 +131,14 @@ input {
            else{
             console.log("congratulations");
             win.innerText=+win.innerText+1
+            replay()
+            genrate()
            }
+           inp.value = ""
           
-        }
+      }
+      
+        
     </script>
 </body>
 </html>
